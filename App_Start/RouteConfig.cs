@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,12 @@ namespace Vidly
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                "MoviesByReleaseDate",
+                    "movies/released/{year}/{month}",
+                    new { controller = "Movies", action = "ByReleaseDate" }
+            );
 
             routes.MapRoute(
                 name: "Default",
